@@ -6,10 +6,11 @@ import { Suit } from "../enums/Suit"
 import { AceHighRank, AceLowRank, NoLowsRank } from "../enums/Rank"
 
 export default class Deck extends Stack implements IDeck {
-    jokers: boolean = false
+    jokers: boolean
 
-    constructor(ranking: Rankings, jokers: boolean) {
+    constructor(ranking: "AceHigh" | "AceLow" | "NoLows", jokers: boolean) {
         super([])
+        this.jokers = jokers
         Deck.generateDeck(this, ranking, jokers)
         Stack.shuffle(this)
     }
